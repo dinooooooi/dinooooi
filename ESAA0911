@@ -64,3 +64,29 @@ dataframe ix[] 연산자
 열 위치 지정은 칼럼 명이 아닌 칼럼의 위치 값 지정도 가능
 but 사라질 예정
 loc[] 칼럼 명칭 기반 인덱싱 연산자 & iloc[] 칼럼 위치 기반 인덱싱 연산자가 만들어짐
+
+명칭 기반 인덱싱과 위치 기반 인덱싱의 구분
+명칭 기반 인덱싱 : 칼럼의 명칭을 기반으로 위치를 지정하는 방식
+위치 기반 인덱싱 : 0을 출발점으로  행, 열 값으로 정수가 입력됨
+dataframe의 인덱스값은 명칭 기반 인덱싱으로 간주
+iloc[] : 위치 기반 인덱싱만 허용 - 행과 열 값으로 integer 또는 integer형의 슬라이싱, 팬시 리스트 값을 입력
+lic[] : 명칭 기반 데이터 추출 - 행에 dataframe index 값, 열에 칼럼 명 입력
+슬라이싱 기호 - 시작값~종료값-1
+but loc[]에 슬라이싱 기호는 시작값~종료값
+why? 명칭 기반 인덱싱이기 때문에
+
+불린 인덱싱
+: 데이터 필터링 방식 / 가져올 값의 조건으로 ix[] 내에 입력하면 자동으로 원하는 값을 필터링
+[], loc[] 가능, iloc[] 불가능
+and 조건 -> & , or 조건 -> |, not 조건 -> ~
+
+정렬, aggregation 함수, groupby 적용
+dataframe, series 정렬 - sort_values() 메서드 이용
+sort_values(by=[''], ascending=True, inplace=False) 가 기본
+
+aggregation 함수 적용
+= min(), max(), sum(), count()
+바로 dataframe에 호출하면 모든 칼럼에 적용
+
+groupby() 적용
+dataframe에 groupby()를 호출하면 dataframegroupby 라는 또다른 형태의 dataframe을 반환
