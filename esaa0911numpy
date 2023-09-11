@@ -1,0 +1,804 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 5,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "collapsed_sections": [
+        "51898680"
+      ],
+      "include_colab_link": true
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/seungmei/ESAA_23_2/blob/main/1%EC%A3%BC%EC%B0%A8%EA%B8%88%EC%84%B8%EC%85%98.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bf79c78b"
+      },
+      "source": [
+        "# Numpy exercises\n",
+        "\n",
+        "This is a collection of exercises that have been collected in the numpy mailing list, on stack overflow\n",
+        "and in the numpy documentation. The goal of this collection is to offer a quick reference for both old\n",
+        "and new users but also to provide a set of exercises for those who teach.\n",
+        "\n",
+        "\n",
+        "If you find an error or think you've a better way to solve some of them, feel\n",
+        "free to open an issue at <https://github.com/rougier/numpy-100>."
+      ],
+      "id": "bf79c78b"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "8536e059"
+      },
+      "source": [
+        "File automatically generated. See the documentation to update questions/answers/hints programmatically."
+      ],
+      "id": "8536e059"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "f1ae2c2d"
+      },
+      "source": [
+        "#### 26. How to find common values between two arrays? (★☆☆)\n",
+        "```python\n",
+        "Z1 = np.random.randint(0,10,10)\n",
+        "Z2 = np.random.randint(0,10,10)\n",
+        "```\n",
+        "Hint : use `numpy.random.randint(start, end, size)`"
+      ],
+      "id": "f1ae2c2d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6801c73d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "10e81750-4ab8-4c1c-d441-0dc351de613b"
+      },
+      "source": [
+        "Z1 = np.random.randint(0,10,10)\n",
+        "Z2 = np.random.randint(0,10,10)\n",
+        "np.intersect1d(Z1,Z2)"
+      ],
+      "id": "6801c73d",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 4, 7])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 63
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "37bc0973"
+      },
+      "source": [
+        "#### 27. Is the following expressions true? (★☆☆)\n",
+        "```python\n",
+        "np.sqrt(-1) == np.emath.sqrt(-1) #False\n",
+        "```"
+      ],
+      "id": "37bc0973"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "c70cbabe",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "cc27f5b1-2125-4236-8de4-519f835391dc"
+      },
+      "source": [
+        "np.sqrt(-1) == np.emath.sqrt(-1)"
+      ],
+      "id": "c70cbabe",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "<ipython-input-64-16339fbc685e>:1: RuntimeWarning: invalid value encountered in sqrt\n",
+            "  np.sqrt(-1) == np.emath.sqrt(-1)\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "False"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 64
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "uFZqYO0BxrKi"
+      },
+      "id": "uFZqYO0BxrKi",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "42f8b2f9"
+      },
+      "source": [
+        "#### 28. How to get all the dates corresponding to the month of July 2016? (★★☆)\n",
+        "Hint : modify the code below\n",
+        "```python\n",
+        "Z = np.arange('start', 'end', dtype='datetime64[D]')\n",
+        "```"
+      ],
+      "id": "42f8b2f9"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Z = np.arange('2016-07', '2016-08', dtype='datetime64[D]')\n",
+        "Z"
+      ],
+      "metadata": {
+        "id": "3kkl01x3x0NF",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "a00c4827-628d-44ee-91e9-de17a095298d"
+      },
+      "id": "3kkl01x3x0NF",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array(['2016-07-01', '2016-07-02', '2016-07-03', '2016-07-04',\n",
+              "       '2016-07-05', '2016-07-06', '2016-07-07', '2016-07-08',\n",
+              "       '2016-07-09', '2016-07-10', '2016-07-11', '2016-07-12',\n",
+              "       '2016-07-13', '2016-07-14', '2016-07-15', '2016-07-16',\n",
+              "       '2016-07-17', '2016-07-18', '2016-07-19', '2016-07-20',\n",
+              "       '2016-07-21', '2016-07-22', '2016-07-23', '2016-07-24',\n",
+              "       '2016-07-25', '2016-07-26', '2016-07-27', '2016-07-28',\n",
+              "       '2016-07-29', '2016-07-30', '2016-07-31'], dtype='datetime64[D]')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 66
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "252c43e2"
+      },
+      "source": [
+        "#### 29. How to compute ((A+B)*(-A/2)) in place (without copy)? (★★☆)\n",
+        "Hint : use `numpy.add`, `numpy.divide`,`numpy.negative`, `numpy.multiply` and parameter `out` of the funtions"
+      ],
+      "id": "252c43e2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "f06ff615",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8ad497e9-09fe-4fc2-a71d-21feec471bb4"
+      },
+      "source": [
+        "A = np.eye(3)\n",
+        "B = np.eye(3)\n",
+        "\n",
+        "np.multiply((np.add(A,B)), (np.divide(np.negative(A),2)))"
+      ],
+      "id": "f06ff615",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[-1., -0., -0.],\n",
+              "       [-0., -1., -0.],\n",
+              "       [-0., -0., -1.]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 67
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "486df8ea"
+      },
+      "source": [
+        "#### 30. Extract the integer part of a random array of positive numbers using 2 different methods (★★☆)\n",
+        "Hint : `%`, `//`"
+      ],
+      "id": "486df8ea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "34b4fa08",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8947b9c3-e14d-4a1f-a7ac-872b54002713"
+      },
+      "source": [
+        "arr = np.random.random(4)\n",
+        "\n",
+        "print(arr - (arr%1))\n",
+        "print((arr//1))"
+      ],
+      "id": "34b4fa08",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0. 0. 0. 0.]\n",
+            "[0. 0. 0. 0.]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "649e89f9"
+      },
+      "source": [
+        "#### 31. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)"
+      ],
+      "id": "649e89f9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "663cc611",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "5af9973d-48b0-4e68-9ae7-2527cbe1e916"
+      },
+      "source": [
+        "array17 = np.zeros((5,5))\n",
+        "array17[1,:] = 1\n",
+        "array17[2,:] = 2\n",
+        "array17[3,:] = 3\n",
+        "array17[4,:] = 4\n",
+        "array17"
+      ],
+      "id": "663cc611",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[0., 0., 0., 0., 0.],\n",
+              "       [1., 1., 1., 1., 1.],\n",
+              "       [2., 2., 2., 2., 2.],\n",
+              "       [3., 3., 3., 3., 3.],\n",
+              "       [4., 4., 4., 4., 4.]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 76
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2d07be1c"
+      },
+      "source": [
+        "#### 32. Create a random vector of size 10 and sort it (★★☆)"
+      ],
+      "id": "2d07be1c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "4f7cb3ad",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "77b937db-363b-49a6-92e9-0dfe5299982a"
+      },
+      "source": [
+        "np.sort(np.random.random(10))"
+      ],
+      "id": "4f7cb3ad",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0.09889047, 0.10090731, 0.30413183, 0.34041948, 0.59645106,\n",
+              "       0.79319592, 0.80060166, 0.81005968, 0.8840893 , 0.96210137])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 77
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "fe043549"
+      },
+      "source": [
+        "#### 33. Consider two random array A and B, check if they are equal (★★☆)\n",
+        "```python\n",
+        "A = np.random.randint(0,2,5)\n",
+        "B = np.random.randint(0,2,5)\n",
+        "```\n",
+        "Hint : Use `numpy.array_equal()`"
+      ],
+      "id": "fe043549"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3326a686",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "a0954d80-bc91-4e48-a9da-4817ba8bef35"
+      },
+      "source": [
+        "A = np.random.randint(0,2,5)\n",
+        "B = np.random.randint(0,2,5)\n",
+        "np.array_equal(A,B)"
+      ],
+      "id": "3326a686",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "False"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 78
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "2002cb03"
+      },
+      "source": [
+        "#### 34. Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆)\n",
+        "Hint 1 : Note that cartesian coodinate **(x, y)** can be represented as  polar coordinates **(distance from origin to (x,y), angle from the x-axis)**\n",
+        "\n",
+        "Hint 2 : Use `numpy.sqrt` and `numpy.arctan2`"
+      ],
+      "id": "2002cb03"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "58be72bc",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "4f06a348-1aa3-4c44-f7af-cf35d80a98d6"
+      },
+      "source": [
+        "Z = np.random.random((10,2))\n",
+        "X,Y = Z[:,0], Z[:,1]\n",
+        "R = np.sqrt(X**2+Y**2)\n",
+        "T = np.arctan2(Y,X)\n",
+        "print(R)\n",
+        "print(T)"
+      ],
+      "id": "58be72bc",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0.80416088 0.43008191 0.68336708 0.73276702 0.9313239  0.90739192\n",
+            " 1.18444374 0.92301697 1.28644191 0.41372913]\n",
+            "[0.12897854 0.2747387  1.1775125  0.79396143 0.68348592 1.32774488\n",
+            " 0.97933515 0.91402177 0.73655368 1.18210972]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "b7109c9f"
+      },
+      "source": [
+        "#### 35. Create random vector Z of size 10 and replace the maximum value by 0 (★★☆)\n",
+        "Hint : We can see the index of maximum value using `Z.argmax()`"
+      ],
+      "id": "b7109c9f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "f79e79a7",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "80cdc47a-c423-4646-de8b-b46888a00a73"
+      },
+      "source": [
+        "array19 = np.random.random(10)\n",
+        "print(array19)\n",
+        "array19[np.argmax(array19)] = 0\n",
+        "array19"
+      ],
+      "id": "f79e79a7",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0.28337135 0.91675623 0.0777637  0.84564457 0.35765845 0.75345954\n",
+            " 0.44636116 0.96412496 0.00667901 0.75874619]\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0.28337135, 0.91675623, 0.0777637 , 0.84564457, 0.35765845,\n",
+              "       0.75345954, 0.44636116, 0.        , 0.00667901, 0.75874619])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 83
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "e6e1ae2f"
+      },
+      "source": [
+        "#### 36. How to find the closest value (to a given scalar v) in a vector Z? (★★☆)\n",
+        "```python\n",
+        "Z = np.arange(100)\n",
+        "v = np.random.uniform(0,100)\n",
+        "```\n",
+        "Hint : Coumpute the distances between the each elements of Z and the scalar v. After that, we can see the index of minimum value using `argmin()`.  "
+      ],
+      "id": "e6e1ae2f"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Z = np.arange(100)\n",
+        "v = np.random.uniform(0,100)\n",
+        "\n",
+        "dis = Z - v\n",
+        "Z[argmin(dis)]\n"
+      ],
+      "metadata": {
+        "id": "QkQ2Mii77FrE",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "29268265-c6d2-4cb7-9d64-367805842867"
+      },
+      "id": "QkQ2Mii77FrE",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 86
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "f98713a6"
+      },
+      "source": [
+        "#### 37. What is the equivalent of enumerate for numpy arrays? (★★☆)\n",
+        "Hint : Use `numpy.ndenumerate()`or `numpy.ndindex()`\n",
+        "\n",
+        "Example of the output :\n",
+        "```python\n",
+        "Z = np.arange(9).reshape(3,3)\n",
+        "```\n",
+        "```python\n",
+        "# output\n",
+        "(0, 0) 0\n",
+        "(0, 1) 1\n",
+        "(0, 2) 2\n",
+        "(1, 0) 3\n",
+        "(1, 1) 4\n",
+        "(1, 2) 5\n",
+        "(2, 0) 6\n",
+        "(2, 1) 7\n",
+        "(2, 2) 8\n",
+        "```"
+      ],
+      "id": "f98713a6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "64795f84",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "55697db7-f3be-4047-b8b7-602b58d827a5"
+      },
+      "source": [
+        "Z = np.arange(9).reshape(3,3)\n",
+        "for index, value in np.ndenumerate(Z):\n",
+        "    print(index, value)\n",
+        "for index in np.ndindex(Z.shape):\n",
+        "    print(index, Z[index])"
+      ],
+      "id": "64795f84",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(0, 0) 0\n",
+            "(0, 1) 1\n",
+            "(0, 2) 2\n",
+            "(1, 0) 3\n",
+            "(1, 1) 4\n",
+            "(1, 2) 5\n",
+            "(2, 0) 6\n",
+            "(2, 1) 7\n",
+            "(2, 2) 8\n",
+            "(0, 0) 0\n",
+            "(0, 1) 1\n",
+            "(0, 2) 2\n",
+            "(1, 0) 3\n",
+            "(1, 1) 4\n",
+            "(1, 2) 5\n",
+            "(2, 0) 6\n",
+            "(2, 1) 7\n",
+            "(2, 2) 8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0cf413ee"
+      },
+      "source": [
+        "#### 38. How to randomly place p elements in a 2D array? (★★☆)\n",
+        "Hint : modify the code below\n",
+        "```python\n",
+        "n = 'size of a 2D array'\n",
+        "p = 'the number of elements that you want to place'\n",
+        "Z = np.zeros((n,n))\n",
+        "np.put(Z, np.random.choice(range(n*n), p, replace = False),'value that you want to place')\n",
+        "print(Z)\n",
+        "```"
+      ],
+      "id": "0cf413ee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dfc57e06",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "671d6918-2fc0-40b2-ea76-fae1e848993c"
+      },
+      "source": [
+        "n = 3\n",
+        "p = 8\n",
+        "Z = np.zeros((n,n))\n",
+        "np.put(Z, np.random.choice(range(n*n), p, replace = False),2)\n",
+        "print(Z)"
+      ],
+      "id": "dfc57e06",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[2. 2. 2.]\n",
+            " [2. 0. 2.]\n",
+            " [2. 2. 2.]]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "c0cf37e0"
+      },
+      "source": [
+        "#### 39. How to sort an array below by the nth column? (★★☆)\n",
+        "```python\n",
+        "Z = np.random.randint(0,10,(3,3))\n",
+        "```"
+      ],
+      "id": "c0cf37e0"
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Z = np.random.randint(0,10,(3,3))"
+      ],
+      "metadata": {
+        "id": "a3ZPRcZpi8PG"
+      },
+      "id": "a3ZPRcZpi8PG",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9336ca5f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "37a95310-0798-4817-8ec1-e95025e1c797"
+      },
+      "source": [
+        "# column 1\n",
+        "np.sort(Z[:,0])"
+      ],
+      "id": "9336ca5f",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([2, 7, 9])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 92
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# column 2\n",
+        "np.sort(Z[:,1])"
+      ],
+      "metadata": {
+        "id": "0hZzZ6tn2K6V",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "a04ba8ad-0a78-4fc9-9556-5e540a71e597"
+      },
+      "id": "0hZzZ6tn2K6V",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([4, 7, 9])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 93
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# column 3\n",
+        "np.sort(Z[:,2])"
+      ],
+      "metadata": {
+        "id": "z4zqQXvt2NaB",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "4b9056b4-f8d0-47bc-c978-24cd4fab12d7"
+      },
+      "id": "z4zqQXvt2NaB",
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([1, 6, 7])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 94
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "gf9h5iwljMvP"
+      },
+      "id": "gf9h5iwljMvP",
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
