@@ -90,3 +90,15 @@ aggregation 함수 적용
 
 groupby() 적용
 dataframe에 groupby()를 호출하면 dataframegroupby 라는 또다른 형태의 dataframe을 반환
+
+결손 데이터 처리하기
+결손 데이터 : 칼럼에 값이 없는 null인 경우, 넘파이의 NaN으로 표시
+isna() : nan 여부 확인
+fillna() : nan값을 다른 값으로 대체하는 api / inplace=True 추가해야 실제 데이터 셑 값이 변경
+isna() + sum() : 결손 데이터의 개수 구함
+
+apply lambda 식으로 데이터 가공
+일괄적으로 칼럼에 데이터 가공을 하는 것이 속도 면에서 더 빠르거나 복잡한 데이터 가공이 필요한 경우 이용
+여러 개의 값을 입력 인자로 사용해야 할 경우에는 보통 map() 함수 결합
+if else 지원 - if 절의 경우 if 식보다 반환 값을 먼저 기술해야함 (lambda식 : 기호의 오른편에 반환 값이 있어야하기 때문
+if, else (o) else if (x)
