@@ -43,3 +43,229 @@ Ndarray.shape는ndarray의 차원과 크기를 튜플 형태를 나타냄
 [[1,2,3],[2,3,4]] array의 shape는(2,3) 2개 로우, 3개 칼럼으로 이해해면 됨
 Print('arra1: {:0}차원, array2:  {:1}차원, array3: {:2}차원‘, format(array1.ndim, array2.ndim, array3.ndim))
 리스트 객채로 차원, 크기 쉽게 표현
+
+ndarray의 데이터 타입
+•	숫자, 문자열, 불값 가능
+•	숫자형 - int, unsigned int형, float형, complex타입
+•	한 개의 ndarray에 int와 float가 함께 있을 수 없음
+
+Ndarray내의 데이터 타입 확인 - dtype 속성
+List1 =[1,2,3]
+Print(type(list1))
+Array1=np.array(list1)
+Print(type(array1))
+Print(array1, array1.dtype)
+Ndarray로 다른 데이터 유형 크기 더 큰 데이터 타입으로 형 변환
+list2 = [1,2, 'test']
+Array2=np.array(list2)
+Print(array2, array2.dtype)
+List3=[1,2,3,0]
+Array3=np.array(list3)
+Print(array3, array3.dtype)
+Astype()메서드를 이용해 데이터값의 타입 변경-메모리 절약용
+float -> int형 소수점 이하 없어짐
+Array_int =np.array([1,2,3])
+Array_float = array_int.astype('float64')
+Print(array_float, array_float.dtype)
+Array_int1=array_float.astype('int32')
+Print(array_int1, array_int1.dtype)
+Array_float1 = np.array([1.1,2.1,3.1])
+Array_int2 = array_float1.astype('int32')
+Print(array_int2, array_int2.dtype)
+
+Ndarray 쉽게 생성 - arange, zeros, ones
+테스트용으로 데이터 만들기, 대규모 데이터 일괄적으로 초기화
+arange()sms range()와 비슷
+Sequence_array = np.arrange(10)
+Print(sequency_array)
+Print(sequence_array.dtype, sequence_array.shape)
+
+Default 함수 인자 = stop 값
+0 ~ 9 1차원 ndarray
+zeros() 모든 값을. 0으로 채운 해당 shape를 가진 ndarray 반환
+default로 float64형의 데이터로 ndarray채움
+Zero_array = np.zeros(((3,2),dtype='int32'))
+Print(zero_array)
+Print(zero_array.dtype, zero_array.shape)
+One_array=np.ones((3,2))
+Print(one_array)
+Print(one_array.dtype, one_array.shape)
+
+Ndarray의 차원과 크기를 변경하는 reshape()
+Array1 = np.arange(10)
+Print('array1:\n', array1)
+Array2 = array1.reshape(2,5)
+Print('array2:\n', array2)
+Array3 = array1.reshape(5,2)
+Print('array3:\n', array3)
+-1을 인자로 사용하는 경우
+array1 = np.arange(10)
+Print(array1)
+Array2=array1.reshape(-1,5)
+Print ('array2 shape:', array2.shape)
+Array3 = Array1.reshape(5,-1)
+Print('array3 shape:', array3.shape)
+
+array1 =. Np.arange(8)
+Array3d = array1.reshape((2,2,2))
+Pritn('array3d:\n', array3d.tolist())
+Array5 = array3d.reshape(-1,1)
+Print('array5:\n', array5.tolist())
+Print('array5. Shape:', array5.shape)
+Array6 = array1..reshape(-1,1)
+Print('array6:\n',  array6.tolist())
+Print('array6 shape:', array6.shape)
+
+넘파이의 ndarray의 데이터 세트 선택 - 인덱싱
+
+1) 특정 데이터만 추출
+2) 슬라이싱(연속된 인덱스상의 ndarray추출‘:’기호 사이에 시작 인덱스와 종료 인덱스를 표시하면 시작 인덱스에서 종료 인덱스 -1 위치에. 있는 데이터의 ndarray를 반환
+3) 팬시 인덱싱 : 일정한 인덱싱 집합을 리스트 또는 ndarray형태로 지정해 해당 위치에 있는 데이터의 ndarray를 반환
+4) 볼린 인덱싱 : 특정 조건에 해당하는지 여부인 t/f값 인덱싱 잡합 기반 t에 해당 위치에 있는 데이터의 ndarray를 반환
+
+단일 값 추출
+Ndarray 객체에 해당하는 위치의 인덱스 값을 []안에 입력
+arraÿ==np.arange(start=1, stop=10)
+Print('array1:', array1)
+Value=array1[2]
+Print('value:',  value)
+Print(type(value))
+인덱스에 마이너스 기호를 이용하면 맨 뒤에서부터 데이터를 추출. 
+Print('맨뒤의값;‘, array1[-1], '맨. 뒤에서 두번째 값;’, arraÿ[-2])
+
+Array1[0]=9
+Array1[8]=0
+Print('array1:', array1)
+
+Array1d = np.arange(start=1, stop=10)
+Array2d = array1d.reshape(3,3)
+Print(array2d)
+
+print('(row=0, col=0) index ', array2d[0, 0])
+print('(row-0, col=1) index 가리키는 값: , array2d[0, 11)
+print('(row=1, col=0) index 가리키는 값:, array2d[1, 01)
+print('(row=2, col=2) index 가리키는 값:', array2d[2, 2])
+
+2차원으로 표현. axis0 - row , axis1 - col
+
+슬라이싱
+array1 = np.arange(start=1, stop=10)
+Array3. = array1[0:3]
+Print(array3)
+Print(type(array3))
+1.	':' 기호앞에 시작 인덱스를 생략하면 자동으로 맨 처음 인덱스인 0으로 간주
+2. : 기호 뒤에 종료 인덱스를 생략하면 자동으로 맨 마지막 인덱스로 간주
+3. : 기호 앞/뒤에 시작/종료 인덱스를 생략하면 자동으로 맨 처음/맨 마지막 인덱스로 간주
+array1 = np.arange(start=1, stop=10)
+array4 = array1 [:31
+print (array4)
+array5 = array1 [3:]
+print(array5)
+array6 = array1[:]
+print(array6)
+
+2차원 ndarray에서 슬라이싱으로 데이터 접근
+array1d = np.arange(start=1, stop=10)
+array2d = array1d.reshape(3, 3)
+print('array2d:\n', array2d)
+print('array2d[0:2, 0:2] \n', array2d[0:2, 0:2])
+print('array2d[1:3, 0:3] \n', array2d[1:3, 0:3])
+print('array2d[1:3, :] \n', array2d[1:3, :])
+print('array2d[:, :] \n', array2dl:, :])
+print('array2d[:2, 1:] \n', array2d[:2, 1:])
+print ('array2d[:2, 0] \n', array2d[:2, 0])
+
+array2d[0]처럼 2차원에서 뒤에 오는 인덱스를 없애면 로우 축의 첫번째 로우 ndarray를반환
+낮은 차원의 ndarray 반환
+print(array2d[0])
+print(array2d[1])
+print('array2d[0] shape:', array2d[0].shape, 'array2d[1] shape:', array2d[1].shape )
+
+팬시 인덱싱
+array1d = np.arange (start=1, stop=10)
+array2d = array1d.reshape(3, 3)
+array3 = array2d[(0, 1], 2]
+print('array2d[[o, 1], 2] => ', array3.tolist())
+array4 = array2d[[0, 1], 0:2]
+print('array2d[(0, 1], 0:2] => ', array4.tolist())
+array5 = array2d[[0, 1]]
+print('array2d[(0, 1]] => ', array5. tolist())
+
+불린 인덱싱
+조건 필터링과 검색을 동시에 할 수 없기 때문에 매우 자주 사용되는 인덱싱 방식
+1차원 ndarray[1,2,3,4,5,6,7,8,9]에서 데이터값이 5보다 큰 데이터만 추출하기
+array1d = np.arange(start=1, stop=10)
+# [ ] 안에 array1d > 5 Boolean indexing을 적용
+array3 = array1d[array1d > 5]
+print('array1d > 5 불린 인덱싱 결과 값 :', array3)
+넘파이 ndarray 객체에 조건식 할당
+Array1d>5
+-> t/f로 이뤄진 객체로 반환
+Ndarray 만들고 array1d[] 내에 인덱스로 입력하면 동일한 데이터 세트 반환
+boolean_indexes = np.array([False, False, False, False, False, True, True, True, True])
+array3 = array1d boolean_indexes]
+print('불린 인덱스로 필터링 결과 :‘ , array3)
+인덱싱이 동작하는 단계
+Step 1: array1d > 5와 같이 ndarray의 필터링 조건을 [] 안에 기재
+Step 2: False 값은 무시하고 True 값에 해당하는 인덱스값만 저장(유의해야 할 사항은 True값 자체인 1을 저장하는 것 이 아니라 True값을 가진 인덱스를 저장한다는 것입니다)
+Step 3: 저장된 인덱스 데이터 세트로 ndarray 조회
+내부 로직의 복합성에 비해 단순한 코딩
+
+행렬의 정렬 - sort()와 argsort()
+np.sort() - > 원 행렬은 그대로 유지한 채 원 행렬의 정렬된 행렬을 반환
+ndarray.sort() - > 원 행렬 자체를 정렬한 형태로 변환 반환 값은 none
+
+Org_array = np.array([3,1,9,5])
+Print('원본 행렬:‘,org_array)
+Sort_array1 = np.sort(org_array)
+Print('np.sort() 호출 후 반환된 정렬 행렬:’, sort_array1)
+print('np.sort( ) 호출 후 원본 행렬: , org_array)
+# ndarray.sort( )로 정렬
+sort_array2 = org_array.sort()
+print('org_array.sort( ) 호출 후 반환된 행렬: , sort_array2)
+print('org_array.sort( ) 호출 후 원본 행렬:', org_array)
+기본적으로 오름차순
+내림차순으로 정렬하기 위해서는 np.sort()[::-1] 적용
+행렬이 2차원 이상일 경우 axis 축 값 설정을 통해 로우 방향 or 칼럼 방향으로 정렬 수행
+array2d = np .array ([[8, 12],
+						  [7, 1 ]])
+sort_array2d_axis0 = np.sort(array2d, axis=0)
+print('로우 방향으로 정렬: \n', sort_array2d_axis0)
+sort_array2d_axis1 = np.sort (array2d, axis=1)
+print('칼럼 방향으로 정렬: \n', sort_array2d_axis1)
+정렬된 행렬의 인덱스 반환하기
+np.argsort()는 정렬 행렬의 원본 행렬 인덱스를 ndarray 형으로 반환
+
+org_array = np.array([ 3, 1, 9, 5])
+sort_indices = np.argsort(org_array)
+print (type(sort_indices))
+print('행렬 정렬 시 원본 행렬의 인덱스:', sort_indices)
+내림차순 정렬 시에 원본 행렬의 인덱스 구하기 np.argsort()[::-1]
+org_array = np.array([ 3, 1, 9, 5])
+sort_indices_desc = np.argsort(org_array)[::-1]
+print('행렬 내림차순 정렬 시 원본 행렬의 인덱스:', sort_indices_desc)
+
+넘파이에서 argsort()의 활용
+성적순으로 학생 이름 출력 - np.argsort(score_array)를 이용해 반환된 인덱스를 name_array에 팬시 인덱스로 적용해 추출
+import numpy as np
+name_array = np.array([ 'John', 'Mike', 'Sarah', 'Kate', 'Samuel'])
+score_array= np.array(l78, 95, 84, 98, 88])
+sort_indices_asc = np.argsort (score_array)
+print('성적 오름차순 정렬 시 score_array의 인덱스:', sort_indices_asc)
+print('성적 오름차순으로 name_array의 이름 출력:', name_array[sort_indices_ascl)
+
+선형대수 연산 - 행렬 내적과 전치 행렬 구하기
+행렬 내적 = 행렬곱
+두 행렬 A와 b의 내적은 np.dot() 이용해 계산 가능
+행렬 내적을 넘파이 dot()으로 구하기
+A = np.array( [[1, 2, 3],
+[4, 5, 6]] )
+B = np.array( [[7, 8],
+[9, 10],
+[11, 12]] )
+dot_product = np.dot(A,B)
+Print('행렬 내적 결과:\n', dot_product)
+A = np.array (Il1, 2],
+(3, 4]])
+transpose_mat = np. transpose(A)
+print('A의 전치 행렬: In', transpose_mat)
